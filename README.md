@@ -14,20 +14,30 @@
             background-color: #0F172A; /* Azul escuro principal */
             line-height: 1.6;
             scroll-behavior: smooth;
+            padding: 0; /* Remove padding padrão do body */
+            margin: 0; /* Remove margem padrão do body */
+            min-height: 100vh; /* Garante que o body ocupa pelo menos 100% da altura da viewport */
+            overflow-x: hidden; /* Evita barra de rolagem horizontal */
         }
         .container {
-            max-width: 950px; /* Levemente mais largo */
-            margin: 0 auto;
+            max-width: 950px; /* Largura máxima para centralizar o conteúdo principal */
+            margin: 0 auto; /* Centraliza o contêiner na tela */
             padding: 0;
             background-color: #ffffff;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); /* Sombra mais forte */
-            border-radius: 20px; /* Cantos mais arredondados */
-            overflow: hidden; /* Garante que os filhos respeitem o border-radius */
+            border-radius: 20px; /* Cantos arredondados no contêiner principal */
+            overflow: hidden;
         }
+
+        /* Estilo para centralizar o conteúdo dentro das seções */
+        .section-content {
+            padding: 0 2rem; /* Adiciona padding lateral para respiro dentro do conteúdo */
+        }
+
         .hero-section {
             background: linear-gradient(145deg, #1A202C 0%, #3B82F6 100%); /* Gradiente escuro para azul vibrante */
             color: white;
-            padding: 5rem 2rem;
+            padding: 5rem 0; /* Padding vertical, padding horizontal via .section-content */
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -119,7 +129,7 @@
             to { transform: translateY(0); opacity: 1; }
         }
         .section-padding {
-            padding: 4rem 2rem;
+            padding: 4rem 0; /* Padding vertical, padding horizontal via .section-content */
         }
         .section-title {
             font-size: 3rem; /* Títulos de seção maiores */
@@ -169,7 +179,7 @@
 
         .testimonial-section {
             background: #F8FAFC; /* Fundo suave */
-            padding: 4rem 2rem;
+            padding: 4rem 0; /* Padding vertical, padding horizontal via .section-content */
             text-align: center;
             border-top: 1px solid #E2E8F0;
             border-bottom: 1px solid #E2E8F0;
@@ -230,20 +240,20 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Nova seção de Bônus */
-        .bonus-section {
+        /* Nova seção de Bônus 1 (Script Infalível) */
+        .bonus-section-script {
             background: linear-gradient(135deg, #10B981 0%, #059669 100%); /* Gradiente verde vibrante */
             color: white;
-            padding: 4rem 2rem;
+            padding: 4rem 0;
             text-align: center;
             border-radius: 20px;
-            margin: 3rem 2rem; /* Margem para destacá-lo */
+            margin: 3rem 0; /* Margem apenas vertical para destacá-lo */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
             border: 4px solid #FACC15; /* Borda amarela chamativa */
         }
-        .bonus-section::before {
+        .bonus-section-script::before {
             content: '🎁 BÔNUS EXCLUSIVO 🎁';
             position: absolute;
             top: 0;
@@ -257,18 +267,47 @@
             transform: translateY(-100%);
             animation: slideDownBonus 1s ease-out forwards;
         }
+
+        /* Nova seção de Bônus 2 (Instagram para Negócios) */
+        .bonus-section-instagram {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%); /* Gradiente roxo/índigo */
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 3rem 0; /* Margem apenas vertical para destacá-lo */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 4px solid #FFD700; /* Borda amarela chamativa */
+        }
+         .bonus-section-instagram::before {
+            content: '🔥 BÔNUS INCRÍVEL! 🔥';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 0.8rem 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            transform: translateY(-100%);
+            animation: slideDownBonus 1s ease-out forwards;
+        }
+
         @keyframes slideDownBonus {
             from { transform: translateY(-100%); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-        .bonus-section h2 {
+        .bonus-section-script h2, .bonus-section-instagram h2 {
             font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             color: #FFD700; /* Amarelo no título do bônus */
         }
-        .bonus-section p {
+        .bonus-section-script p, .bonus-section-instagram p {
             font-size: 1.4rem;
             margin-bottom: 1.5rem;
             color: #E0F2FE;
@@ -296,11 +335,18 @@
             margin-right: 1rem;
             color: #FACC15; /* Ícone amarelo */
         }
+        .bonus-section-instagram .bonus-list li {
+            border-left: 5px solid #FFD700; /* Borda amarela nos itens do bônus Instagram */
+        }
+         .bonus-section-instagram .bonus-list li svg {
+            color: #FFD700; /* Ícone amarelo */
+        }
+
 
         /* Responsividade geral */
         @media (max-width: 768px) {
             .hero-section {
-                padding: 3rem 1rem;
+                padding: 3rem 0; /* Ajustado para 0 lateralmente */
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
             }
@@ -319,7 +365,10 @@
                 margin-bottom: 2.5rem;
             }
             .section-padding {
-                padding: 2.5rem 1rem;
+                padding: 2.5rem 0; /* Ajustado para 0 lateralmente */
+            }
+            .section-content {
+                padding: 0 1rem; /* Menor padding lateral em mobile */
             }
             .price-display {
                 font-size: 2.5rem;
@@ -333,17 +382,17 @@
             .problem-icon, .feature-icon, .benefit-icon {
                 font-size: 3rem;
             }
-            .bonus-section {
-                padding: 3rem 1rem;
-                margin: 2rem 1rem;
+            .bonus-section-script, .bonus-section-instagram {
+                padding: 3rem 0; /* Ajustado para 0 lateralmente */
+                margin: 2rem 0; /* Margem apenas vertical */
             }
-            .bonus-section h2 {
+            .bonus-section-script h2, .bonus-section-instagram h2 {
                 font-size: 2.5rem;
             }
-            .bonus-section p {
+            .bonus-section-script p, .bonus-section-instagram p {
                 font-size: 1.2rem;
             }
-            .bonus-section::before {
+            .bonus-section-script::before, .bonus-section-instagram::before {
                 font-size: 1.2rem;
             }
         }
@@ -353,206 +402,242 @@
     <div class="container">
         <!-- Seção Hero: Título Impactante e Chamada para Ação Principal -->
         <section class="hero-section">
-            <h1 class="animate-fade-in">O Atalho Definitivo para o <br>Sucesso Digital Está Aqui!</h1>
-            <p class="animate-slide-up">Descubra as Ferramentas de Alto Impacto: o arsenal secreto que otimiza sua produtividade, acelera seus resultados e multiplica seu faturamento de forma estratégica.</p>
-            <a href="https://pay.kiwify.com.br/gCIegmS" target="_blank" class="cta-button">QUERO ACELERAR MEUS RESULTADOS AGORA!</a>
-            <div class="mt-10 text-white text-xl font-semibold opacity-90">
-                <p>📈 Mais de 1.000 profissionais já transformaram suas rotinas com este guia!</p>
+            <div class="section-content">
+                <h1 class="animate-fade-in">O Atalho Definitivo para o <br>Sucesso Digital Está Aqui!</h1>
+                <p class="animate-slide-up">Descubra as Ferramentas de Alto Impacto: o arsenal secreto que otimiza sua produtividade, acelera seus resultados e multiplica seu faturamento de forma estratégica.</p>
+                <a href="https://pay.kiwify.com.br/gCIegmS" target="_blank" class="cta-button">QUERO ACELERAR MEUS RESULTADOS AGORA!</a>
+                <div class="mt-10 text-white text-xl font-semibold opacity-90">
+                    <p>📈 Mais de 1.000 profissionais já transformaram suas rotinas com este guia!</p>
+                </div>
             </div>
         </section>
 
         <!-- Seção de Dor e Problema -->
         <section class="section-padding bg-gray-50">
-            <h2 class="section-title">Cansado de Perder Tempo e Dinheiro?</h2>
-            <div class="grid md:grid-cols-2 gap-8 text-center text-gray-700">
-                <div class="problem-card">
-                    <span class="problem-icon">😩</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Sobrecarga de Escolhas</h3>
-                    <p class="text-lg">Milhares de ferramentas, pouca clareza. Qual realmente funciona para o seu negócio?</p>
+            <div class="section-content">
+                <h2 class="section-title">Cansado de Perder Tempo e Dinheiro?</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-center text-gray-700">
+                    <div class="problem-card">
+                        <span class="problem-icon">😩</span>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Sobrecarga de Escolhas</h3>
+                        <p class="text-lg">Milhares de ferramentas, pouca clareza. Qual realmente funciona para o seu negócio?</p>
+                    </div>
+                    <div class="problem-card">
+                        <span class="problem-icon">⏰</span>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Produtividade Estagnada</h3>
+                        <p class="text-lg">Tarefas repetitivas drenando sua energia e impedindo seu crescimento?</p>
+                    </div>
+                    <div class="problem-card">
+                        <span class="problem-icon">💸</span>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Dinheiro Desperdiçado</h3>
+                        <p class="text-lg">Investindo em plataformas que não entregam o que prometem ou que você nem usa?</p>
+                    </div>
+                    <div class="problem-card">
+                        <span class="problem-icon">🤯</span>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Resultados Aquém do Esperado</h3>
+                        <p class="text-lg">Sua concorrência avançando enquanto você sente que está ficando para trás?</p>
+                    </div>
                 </div>
-                <div class="problem-card">
-                    <span class="problem-icon">⏰</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Produtividade Estagnada</h3>
-                    <p class="text-lg">Tarefas repetitivas drenando sua energia e impedindo seu crescimento?</p>
+                <div class="text-center mt-12">
+                    <p class="text-3xl font-bold text-indigo-700">Se você se identificou, este material foi feito para VOCÊ!</p>
                 </div>
-                <div class="problem-card">
-                    <span class="problem-icon">💸</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Dinheiro Desperdiçado</h3>
-                    <p class="text-lg">Investindo em plataformas que não entregam o que prometem ou que você nem usa?</p>
-                </div>
-                <div class="problem-card">
-                    <span class="problem-icon">🤯</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Resultados Aquém do Esperado</h3>
-                    <p class="text-lg">Sua concorrência avançando enquanto você sente que está ficando para trás?</p>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <p class="text-3xl font-bold text-indigo-700">Se você se identificou, este material foi feito para VOCÊ!</p>
             </div>
         </section>
 
         <!-- Seção de Solução/Benefícios Principais -->
         <section class="section-padding bg-blue-100">
-            <h2 class="section-title">A Resposta Definitiva: O Guia de Ferramentas de Alto Impacto!</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="feature-card">
-                    <span class="feature-icon">✅</span>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Curadoria Especialista</h3>
-                    <p class="text-gray-700">Acesso exclusivo às ferramentas que realmente funcionam e foram testadas por décadas de experiência no mercado digital. Diga adeus às tentativas e erros caros!</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🚀</span>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Otimização Extrema</h3>
-                    <p class="text-gray-700">Automatize processos, libere seu tempo e foque no que realmente importa: escalar seus resultados e multiplicar seu faturamento com inteligência.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🎯</span>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Estratégia Comprovada</h3>
-                    <p class="text-gray-700">Um mapa claro para criadores de conteúdo, social media, designers, copywriters, estrategistas e infoprodutores. Sua jornada digital será simplificada e lucrativa.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">💎</span>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Transforme Tempo em Lucro</h3>
-                    <p class="text-gray-700">Nosso objetivo é que você ganhe tempo, organize sua operação e transforme cada minuto em lucro. Este não é apenas um guia, é um investimento no seu faturamento.</p>
+            <div class="section-content">
+                <h2 class="section-title">A Resposta Definitiva: O Guia de Ferramentas de Alto Impacto!</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="feature-card">
+                        <span class="feature-icon">✅</span>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Curadoria Especialista</h3>
+                        <p class="text-gray-700">Acesso exclusivo às ferramentas que realmente funcionam e foram testadas por décadas de experiência no mercado digital. Diga adeus às tentativas e erros caros!</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🚀</span>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Otimização Extrema</h3>
+                        <p class="text-gray-700">Automatize processos, libere seu tempo e foque no que realmente importa: escalar seus resultados e multiplicar seu faturamento com inteligência.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Estratégia Comprovada</h3>
+                        <p class="text-gray-700">Um mapa claro para criadores de conteúdo, social media, designers, copywriters, estrategistas e infoprodutores. Sua jornada digital será simplificada e lucrativa.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">💎</span>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Transforme Tempo em Lucro</h3>
+                        <p class="text-gray-700">Nosso objetivo é que você ganhe tempo, organize sua operação e transforme cada minuto em lucro. Este não é apenas um guia, é um investimento no seu faturamento.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Seção de Prova Social com Depoimento/Autoridade -->
         <section class="testimonial-section">
-            <h2 class="section-title text-indigo-700">Quem Validou Esta Curadoria?</h2>
-            <div class="testimonial-card">
-                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGZDmf0D6zk8g/profile-displayphoto-shrink_800_800/B4DZblNQhSIAAc-/0/1747602180651?e=1756339200&v=beta&t=h4Z-GT4H9L6m3NWSgrPHqv3WPMw9ExY7d1Z8KWwiTB8" alt="Foto de Osmar Costa" class="profile-image mx-auto mb-6 w-36 h-36 rounded-full object-cover border-4 border-indigo-400 shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/144x144/e2e8f0/64748b?text=Foto+Osmar';"/>
-                <p class="testimonial-text">
-                    "Depois de décadas de atuação no mercado digital e de testar centenas de ferramentas, eu separei aquelas que realmente funcionam. São as que me ajudaram e continuam me ajudando até hoje a otimizar processos, escalar resultados e trabalhar com mais leveza e estratégia. Este material é uma extensão prática da minha rotina. Tudo o que você vai encontrar aqui faz parte do meu dia a dia como criador e estrategista."
-                </p>
-                <p class="author-info">Osmar Costa</p>
-                <p class="author-title">Publicitário, Designer e Estrategista Digital (Ex-V4 Company)</p>
+            <div class="section-content">
+                <h2 class="section-title text-indigo-700">Quem Validou Esta Curadoria?</h2>
+                <div class="testimonial-card">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQGZDmf0D6zk8g/profile-displayphoto-shrink_800_800/B4DZblNQhSIAAc-/0/1747602180651?e=1756339200&v=beta&t=h4Z-GT4H9L6m3NWSgrPHqv3WPMw9ExY7d1Z8KWwiTB8" alt="Foto de Osmar Costa" class="profile-image mx-auto mb-6 w-36 h-36 rounded-full object-cover border-4 border-indigo-400 shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/144x144/e2e8f0/64748b?text=Foto+Osmar';"/>
+                    <p class="testimonial-text">
+                        "Depois de décadas de atuação no mercado digital e de testar centenas de ferramentas, eu separei aquelas que realmente funcionam. São as que me ajudaram e continuam me ajudando até hoje a otimizar processos, escalar resultados e trabalhar com mais leveza e estratégia. Este material é uma extensão prática da minha rotina. Tudo o que você vai encontrar aqui faz parte do meu dia a dia como criador e estrategista."
+                    </p>
+                    <p class="author-info">Osmar Costa</p>
+                    <p class="author-title">Publicitário, Designer e Estrategista Digital (Ex-V4 Company)</p>
+                </div>
             </div>
         </section>
 
-        <!-- Nova Seção de Bônus Exclusivo -->
-        <section class="bonus-section">
-            <h2 class="animate-fade-in-up">🎉 BÔNUS EXCLUSIVO PARA VOCÊ! 🎉</h2>
-            <p class="animate-slide-up">Ao adquirir o Guia de Ferramentas de Alto Impacto HOJE, você ganha acesso imediato ao:</p>
-            <h3 class="text-5xl font-extrabold mb-6 text-white text-shadow-lg">SCRIPT DE VENDAS INFALÍVEL!</h3>
-            <p class="text-xl font-semibold mb-8 text-yellow-100">Este script completo e pronto para usar é o seu atalho para: </p>
-            <ul class="bonus-list">
-                <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Quebrar Objeções de Valor e Preço.</li>
-                <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Gerenciar Prazos de Entrega com Confiança.</li>
-                <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Fazer Follow-up de Forma Persuasiva e Correta.</li>
-                <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Conduzir Negociações de Ponta a Ponta.</li>
-            </ul>
-            <p class="text-2xl font-bold mt-8 text-yellow-300">Tudo que você precisa para FECHAR MAIS VENDAS com maestria!</p>
-            <a href="https://pay.kiwify.com.br/gCIegmS" target="_blank" class="cta-button bg-yellow-300 text-blue-900 shadow-lg hover:bg-yellow-400 mt-8">EU QUERO O GUIA + O SCRIPT INFALÍVEL!</a>
+        <!-- Seção de Bônus 1 (Script Infalível) -->
+        <section class="bonus-section-script">
+            <div class="section-content">
+                <h2 class="animate-fade-in-up">🎉 BÔNUS EXCLUSIVO PARA VOCÊ! 🎉</h2>
+                <p class="animate-slide-up">Ao adquirir o Guia de Ferramentas de Alto Impacto HOJE, você ganha acesso imediato ao:</p>
+                <h3 class="text-5xl font-extrabold mb-6 text-white text-shadow-lg">SCRIPT DE VENDAS INFALÍVEL!</h3>
+                <p class="text-xl font-semibold mb-8 text-yellow-100">Este script completo e pronto para usar é o seu atalho para: </p>
+                <ul class="bonus-list">
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Quebrar Objeções de Valor e Preço.</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Gerenciar Prazos de Entrega com Confiança.</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Fazer Follow-up de Forma Persuasiva e Correta.</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Conduzir Negociações de Ponta a Ponta.</li>
+                </ul>
+                <p class="text-2xl font-bold mt-8 text-yellow-300">Tudo que você precisa para FECHAR MAIS VENDAS com maestria!</p>
+                <a href="https://pay.kiwify.com.br/gCIegmS" target="_blank" class="cta-button bg-yellow-300 text-blue-900 shadow-lg hover:bg-yellow-400 mt-8">EU QUERO O GUIA + O SCRIPT INFALÍVEL!</a>
+            </div>
+        </section>
+
+        <!-- Nova Seção de Bônus 2 (Instagram para Negócios) -->
+        <section class="bonus-section-instagram">
+            <div class="section-content">
+                <h2 class="animate-fade-in-up">🔥 BÔNUS INCRÍVEL: INSTAGRAM PARA NEGÓCIOS! 🔥</h2>
+                <p class="animate-slide-up">Transforme seu perfil em uma máquina de vendas e construa uma marca poderosa com o método de Osmar Costa. Este guia bônus irá te capacitar a:</p>
+                <ul class="bonus-list">
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Criar uma Foto de Perfil Clara, Profissional e Reconhecível.</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Desenvolver uma Bio Perfeita com Palavras-Chave e CTA Direto.</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Utilizar Destaques como Vitrines Eternas do seu Conteúdo.</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Construir um Feed Estratégico com Qualidade Visual e Conteúdo de Valor.</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Analisar as Principais Métricas de Engajamento e Insights do Instagram.</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Escalar e Viralizar seu Conteúdo no Instagram de forma estratégica.</li>
+                </ul>
+                <p class="text-2xl font-bold mt-8 text-yellow-300">Domine o Instagram e transforme seguidores em CLIENTES FIÉIS!</p>
+                <a href="https://pay.kiwify.com.br/gCIegmS" target="_blank" class="cta-button bg-yellow-300 text-blue-900 shadow-lg hover:bg-yellow-400 mt-8">QUERO O GUIA + OS BÔNUS IMPERDÍVEIS!</a>
+            </div>
         </section>
 
         <!-- Gatilho de Escassez/Urgência e CTA Secundário -->
         <section class="section-padding bg-red-50 text-center">
-            <h2 class="text-4xl font-extrabold text-red-700 mb-6 animate-bounce">
-                🚨 ULTIMA CHANCE: PREÇO PROMOCIONAL POR TEMPO LIMITADO! 🚨
-            </h2>
-            <p class="text-2xl text-gray-800 mb-8 font-semibold">
-                Essa é a sua oportunidade de ouro para ter acesso imediato às ferramentas que vão revolucionar sua performance digital.
-            </p>
-            <div class="offer-box mb-10">
-                <p class="text-2xl font-bold text-gray-800 mb-4">Aproveite Agora:</p>
-                <div class="price-display">
-                    De: <span class="price-original">R$ 297,00</span> Por Apenas: <span class="price-offer">R$ 29,90</span>
+            <div class="section-content">
+                <h2 class="text-4xl font-extrabold text-red-700 mb-6 animate-bounce">
+                    🚨 ULTIMA CHANCE: PREÇO PROMOCIONAL POR TEMPO LIMITADO! 🚨
+                </h2>
+                <p class="text-2xl text-gray-800 mb-8 font-semibold">
+                    Essa é a sua oportunidade de ouro para ter acesso imediato às ferramentas que vão revolucionar sua performance digital.
+                </p>
+                <div class="offer-box mb-10">
+                    <p class="text-2xl font-bold text-gray-800 mb-4">Aproveite Agora:</p>
+                    <div class="price-display">
+                        De: <span class="price-original">R$ 297,00</span> Por Apenas: <span class="price-offer">R$ 29,90</span>
+                    </div>
+                    <p class="text-xl font-semibold text-gray-700">Isso mesmo! Menos de um café por dia para um arsenal completo de sucesso!</p>
                 </div>
-                <p class="text-xl font-semibold text-gray-700">Isso mesmo! Menos de um café por dia para um arsenal completo de sucesso!</p>
+                <a href="https://pay.kiwify.com.br/gCIegmS" target="_blank" class="cta-button bg-yellow-300 text-blue-900 shadow-xl hover:bg-yellow-400">GARANTIR MEU ACESSO AGORA!</a>
+                <p class="mt-8 text-lg font-semibold text-gray-700">Oferta válida somente para os próximos acessos. Não perca!</p>
             </div>
-            <a href="https://pay.kiwify.com.br/gCIegmS" target="_blank" class="cta-button bg-yellow-300 text-blue-900 shadow-xl hover:bg-yellow-400">GARANTIR MEU ACESSO AGORA!</a>
-            <p class="mt-8 text-lg font-semibold text-gray-700">Oferta válida somente para os próximos acessos. Não perca!</p>
         </section>
 
         <!-- Seção de Benefícios Detalhados (com ícones) -->
         <section class="section-padding bg-gray-100">
-            <h2 class="section-title">O Que Você Vai Destravar Imediatamente:</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="benefit-item">
-                    <span class="benefit-icon">🧠</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Produtividade Extrema</h3>
-                    <p class="text-gray-600">Organize tarefas, ideias e projetos como um mestre digital.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🤖</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Automação Inteligente</h3>
-                    <p class="text-gray-600">Deixe as máquinas trabalharem por você e ganhe horas preciosas.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">📊</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Análise de Mercado Afiada</h3>
-                    <p class="text-gray-600">Descubra tendências e domine seu nicho antes da concorrência.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">📝</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Copywriting Magnético</h3>
-                    <p class="text-gray-600">Crie textos que vendem e convertem em qualquer plataforma.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">✨</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">IA para Criatividade</h3>
-                    <p class="text-gray-600">Gere conteúdo, imagens e vídeos com o poder da Inteligência Artificial.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🛍️</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">E-commerce Otimizado</h3>
-                    <p class="text-gray-600">Plataformas e ferramentas para turbinar suas vendas online.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🎬</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Vídeos e Lives Profissionais</h3>
-                    <p class="text-600">Crie transmissões e conteúdos audiovisuais de alta qualidade.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🤝</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Gestão de Comunidade Forte</h3>
-                    <p class="text-gray-600">Construa e nutra comunidades engajadas e lucrativas.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">💰</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Finanças no Controle</h3>
-                    <p class="text-gray-600">Mantenha suas finanças organizadas e seus lucros em crescimento.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🌐</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Sites de Alta Conversão</h3>
-                    <p class="text-gray-600">Crie páginas que transformam visitantes em clientes fiéis.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🎨</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Design Impactante</h3>
-                    <p class="text-gray-600">Ferramentas para criar visuais profissionais sem ser um expert.</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">💼</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Freelancer de Sucesso</h3>
-                    <p class="text-gray-600">Encontre projetos e construa um portfólio que gera mais clientes.</p>
+            <div class="section-content">
+                <h2 class="section-title">O Que Você Vai Destravar Imediatamente:</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🧠</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Produtividade Extrema</h3>
+                        <p class="text-gray-600">Organize tarefas, ideias e projetos como um mestre digital.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🤖</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Automação Inteligente</h3>
+                        <p class="text-gray-600">Deixe as máquinas trabalharem por você e ganhe horas preciosas.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📊</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Análise de Mercado Afiada</h3>
+                        <p class="text-gray-600">Descubra tendências e domine seu nicho antes da concorrência.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📝</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Copywriting Magnético</h3>
+                        <p class="text-gray-600">Crie textos que vendem e convertem em qualquer plataforma.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✨</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">IA para Criatividade</h3>
+                        <p class="text-gray-600">Gere conteúdo, imagens e vídeos com o poder da Inteligência Artificial.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🛍️</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">E-commerce Otimizado</h3>
+                        <p class="text-gray-600">Plataformas e ferramentas para turbinar suas vendas online.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎬</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Vídeos e Lives Profissionais</h3>
+                        <p class="text-600">Crie transmissões e conteúdos audiovisuais de alta qualidade.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🤝</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Gestão de Comunidade Forte</h3>
+                        <p class="text-gray-600">Construa e nutra comunidades engajadas e lucrativas.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">💰</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Finanças no Controle</h3>
+                        <p class="text-gray-600">Mantenha suas finanças organizadas e seus lucros em crescimento.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🌐</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Sites de Alta Conversão</h3>
+                        <p class="text-gray-600">Crie páginas que transformam visitantes em clientes fiéis.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎨</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Design Impactante</h3>
+                        <p class="text-gray-600">Ferramentas para criar visuais profissionais sem ser um expert.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">💼</span>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Freelancer de Sucesso</h3>
+                        <p class="text-gray-600">Encontre projetos e construa um portfólio que gera mais clientes.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Final com Garantia -->
         <section class="section-padding bg-indigo-700 text-white text-center rounded-t-3xl shadow-inner">
-            <h2 class="text-4xl font-extrabold mb-4 animate-fade-in-up">🌟 SUA JORNADA PARA O TOPO COMEÇA AGORA! 🌟</h2>
-            <p class="text-2xl mb-8">Não espere mais para otimizar seu trabalho, aumentar seus lucros e ter o controle total da sua vida digital.</p>
-            <div class="price-display">
-                De: <span class="price-original">R$ 297,00</span> Por Apenas: <span class="price-offer">R$ 29,90</span>
-            </div>
-            <a href="https://pay.kiwify.com.br/gCIegmS" target="_blank" class="cta-button bg-yellow-300 text-blue-900 shadow-lg hover:bg-yellow-400">CLIQUE AQUI E GARANTA SEU ACESSO COM DESCONTO!</a>
-            <p class="mt-8 text-xl font-bold">🔒 Satisfação 100% Garantida ou Seu Dinheiro de Volta!</p>
-            <p class="text-lg">Você tem 7 dias para testar. Se não gostar, basta pedir seu dinheiro de volta.</p>
-            <div class="mt-6 text-sm text-gray-200">
-                <p>Processado com Segurança por Kiwify.</p>
-                <img src="https://images.seeklogo.com/logo-png/48/2/kiwify-logo-png_seeklogo-489310.png" alt="https://files.inhire.app/pages/career/logo_kiwify.png" class="mx-auto mt-2 opacity-80"/>
+            <div class="section-content">
+                <h2 class="text-4xl font-extrabold mb-4 animate-fade-in-up">🌟 SUA JORNADA PARA O TOPO COMEÇA AGORA! 🌟</h2>
+                <p class="text-2xl mb-8">Não espere mais para otimizar seu trabalho, aumentar seus lucros e ter o controle total da sua vida digital.</p>
+                <div class="price-display">
+                    De: <span class="price-original">R$ 297,00</span> Por Apenas: <span class="price-offer">R$ 29,90</span>
+                </div>
+                <a href="https://pay.kiwify.com.br/gCIegmS" target="_blank" class="cta-button bg-yellow-300 text-blue-900 shadow-lg hover:bg-yellow-400">CLIQUE AQUI E GARANTA SEU ACESSO COM DESCONTO!</a>
+                <p class="mt-8 text-xl font-bold">🔒 Satisfação 100% Garantida ou Seu Dinheiro de Volta!</p>
+                <p class="text-lg">Você tem 7 dias para testar. Se não gostar, basta pedir seu dinheiro de volta.</p>
+                <div class="mt-6 text-sm text-gray-200">
+                    <p>Processado com Segurança por Kiwify.</p>
+                    <img src="https://images.seeklogo.com/logo-png/48/2/kiwify-logo-png_seeklogo-489310.png" alt="Logo da Kiwify" class="mx-auto mt-2 opacity-80"/>
+                </div>
             </div>
         </section>
 
         <!-- Rodapé -->
         <footer class="bg-gray-900 text-white text-center py-6">
-            <p>&copy; 2025 Ferramentas de Alto Impacto. Todos os direitos reservados.</p>
-            <p class="text-sm mt-2">Desenvolvido por Osmar Costa</p>
+            <div class="section-content">
+                <p>&copy; 2025 Ferramentas de Alto Impacto. Todos os direitos reservados.</p>
+                <p class="text-sm mt-2">Desenvolvido por Osmar Costa</p>
+            </div>
         </footer>
     </div>
 </body>
